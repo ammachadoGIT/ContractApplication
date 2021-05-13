@@ -328,3 +328,4 @@ DELIVERY/
 
 # Auto-generated files
 *.lock
+/ContractApplication/Test.db
