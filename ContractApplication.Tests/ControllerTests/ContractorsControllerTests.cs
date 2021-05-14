@@ -68,7 +68,6 @@ namespace ContractApplication.Tests.ControllerTests
 
             result.ShouldNotBeNull();
             result.Count().ShouldBe(contractors.Count);
-            
         }
     }
 }
