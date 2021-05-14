@@ -38,5 +38,13 @@ namespace ContractApplication.Controllers
             var newContractor = await this.contractorService.CreateContractor(contractor);
             return this.CreatedAtAction(nameof(this.CreateContractor), newContractor);
         }
+
+        [HttpGet("path")]
+        public List<int> GetShortestPath([FromQuery] int fromId, [FromQuery] int toId)
+        {
+            var contractors = this.contractorService.ListContractors();
+
+            return this.contractorService.GetShortestPath(fromId, toId, contractors);
+        }
     }
 }
