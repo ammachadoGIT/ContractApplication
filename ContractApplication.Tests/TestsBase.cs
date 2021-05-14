@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 namespace ContractApplication.Tests
 {
+    [TestFixture]
     public abstract class TestsBase
     {
         protected Fixture Fixture { get; private set; }
