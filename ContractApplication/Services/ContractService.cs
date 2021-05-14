@@ -23,12 +23,6 @@ namespace ContractApplication.Services
             return this.Mapper.Map<IEnumerable<ContractDto>>(contracts);
         }
 
-        public ContractDto GetContract(int idFrom, int idTo)
-        {
-            var contract = this.context.Contracts.FindAsync(new Contract() { Contractor1Id = idFrom, Contractor2Id = idTo });
-            return this.Mapper.Map<ContractDto>(contract);
-        }
-
         public async Task CreateContract(ContractDto contractDto)
         {
             this.ValidateContractDto(contractDto);

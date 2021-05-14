@@ -8,8 +8,6 @@ namespace ContractApplication.Services.Interfaces
     {
         IEnumerable<ContractDto> ListContracts();
 
-        ContractDto GetContract(int idFrom, int idTo);
-
         Task CreateContract(ContractDto contractDto);
 
         Task DeleteContract(ContractDto contractDto);
