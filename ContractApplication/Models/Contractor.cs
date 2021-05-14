@@ -42,12 +42,12 @@ namespace ContractApplication.Models
         {
             var randomNumber = RandomGenerator.NextDouble();
 
-            var redChance = 0.2;
-            var yellowChance = 0.2;
-
             // TODO: this could be parametrized to be more flexible if the probability for each status changes.
-            this.HealthStatus = randomNumber < redChance ? HealthStatus.Red :
-                                randomNumber < redChance + yellowChance ? HealthStatus.Yellow : HealthStatus.Green;
+            const double RedChance = 0.2;
+            const double YellowChance = 0.2;
+            
+            this.HealthStatus = randomNumber < RedChance ? HealthStatus.Red :
+                                randomNumber < RedChance + YellowChance ? HealthStatus.Yellow : HealthStatus.Green;
         }
     }
 }
