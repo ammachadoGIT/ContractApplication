@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
 
 namespace ContractApplication.Models
 {
@@ -32,10 +31,8 @@ namespace ContractApplication.Models
         [EnumDataType(typeof(HealthStatus))]
         public HealthStatus HealthStatus { get; set; }
 
-        [JsonIgnore]
         public ICollection<Contract> ContractFrom { get; set; }
 
-        [JsonIgnore]
         public ICollection<Contract> ContractTo { get; set; }
 
         public void AssignHealthStatus()
@@ -45,7 +42,7 @@ namespace ContractApplication.Models
             // TODO: this could be parametrized to be more flexible if the probability for each status changes.
             const double RedChance = 0.2;
             const double YellowChance = 0.2;
-            
+
             this.HealthStatus = randomNumber < RedChance ? HealthStatus.Red :
                                 randomNumber < RedChance + YellowChance ? HealthStatus.Yellow : HealthStatus.Green;
         }
