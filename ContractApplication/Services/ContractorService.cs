@@ -17,7 +17,7 @@ namespace ContractApplication.Services
         public IEnumerable<ContractorDto> ListContractors()
         {
             var contractors = this.context.Contractors;
-            return this.Mapper.Map<IEnumerable<ContractorDto>>(contractors) ;
+            return this.Mapper.Map<IEnumerable<ContractorDto>>(contractors);
         }
 
         public async Task<ContractorDto> GetContractorByIdAsync(int id)
