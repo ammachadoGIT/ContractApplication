@@ -23,8 +23,4 @@
     <ProjectReference Include="..\ContractApplication\ContractApplication.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ServiceTests\" />
-  </ItemGroup>
-
 </Project>
