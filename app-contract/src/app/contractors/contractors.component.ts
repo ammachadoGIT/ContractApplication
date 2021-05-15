@@ -32,4 +32,8 @@ export class ContractorsComponent implements OnInit {
         this.contractors.push(contractor);
       });
   }
+
+  goBack(): void {
+    // this.location.back();
+  }
 }

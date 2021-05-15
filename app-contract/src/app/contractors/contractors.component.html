@@ -1,25 +1,37 @@
 <h2>Add Contractor</h2>
 
-<div>
-  <label for="contractor-name">Name</label>
-  <input id="contractor-name" #contractorName />
+<form class="contractor-form">
+  <mat-form-field class="contractor-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput id="contractor-name" #contractorName />
+  </mat-form-field>
 
-  <label for="contractor-address">Address</label>
-  <input id="contractor-address" #contractorAddress />
+  <mat-form-field class="contractor-full-width">
+    <mat-label for="contractor-address">Address</mat-label>
+    <input matInput id="contractor-address" #contractorAddress />
+  </mat-form-field>
 
-  <label for="contractor-phoneNumber">Phone Number</label>
-  <input id="contractor-phoneNumber" #contractorPhoneNumber />
+  <mat-form-field class="contractor-full-width">
+    <mat-label for="contractor-phoneNumber">Phone Number</mat-label>
+    <input matInput id="contractor-phoneNumber" #contractorPhoneNumber />
+  </mat-form-field>
 
-  <button class="add-button" (click)="add(contractorName.value,
+  <mat-action-list>
+    <button mat-button (click)="goBack()">Go back</button>
+    <button mat-button (click)="add(contractorName.value,
      contractorAddress.value, contractorPhoneNumber.value); contractorName.value=''">
-    Submit
-  </button>
-</div>
+      Submit
+    </button>
+  </mat-action-list>
 
-<ul class="contractors">
-  <li *ngFor="let contractor of contractors">
+</form>
+
+<h2>Contractors List</h2>
+
+<mat-list class="contractors">
+  <mat-list-item *ngFor="let contractor of contractors">
     <a routerLink="/contractors/{{contractor.id}}">
-      <span class="badge">{{contractor.id}}</span> {{contractor.name}}
+      {{contractor.id}}. {{contractor.name}}
     </a>
-  </li>
-</ul>
+  </mat-list-item>
+</mat-list>

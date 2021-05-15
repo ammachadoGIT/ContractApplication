@@ -3,15 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ContractorDetailComponent } from './contractor-detail/contractor-detail.component';
 import { ContractorsComponent } from './contractors/contractors.component';
 import { ContractsComponent } from './contracts/contracts.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -19,6 +22,13 @@ import { ContractsComponent } from './contracts/contracts.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NoopAnimationsModule,
+    MatSliderModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatListModule,
+    MatSelectModule,
+    MatListModule
 
     // // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // // and returns simulated server responses.
@@ -33,6 +43,6 @@ import { ContractsComponent } from './contracts/contracts.component';
     ContractorDetailComponent,
     ContractsComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
