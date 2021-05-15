@@ -1,5 +1,15 @@
-<h2>Add Contract</h2>
+<h2>Contract List</h2>
+<mat-list>
+  <mat-list-item *ngFor="let contract of contracts">
+    
+      <span class="badge">{{counter}}</span> Contractor {{contract.contractor1Id}} -- Contractor
+      {{contract.contractor2Id}}
+    
+  </mat-list-item>
+</mat-list>
 
+
+<!-- <h2>Add Contract</h2>
 <form class="contractor-form">
   <mat-form-field class="contractor-full-width">
   <mat-label for="contract-name">Contractor</mat-label>
@@ -10,14 +20,4 @@
   <mat-label for="contract-address">Contractor</mat-label>
   <mat-select id="contract-address" #contractAddress ></mat-select>
 </mat-form-field>
-</form>
-
-<h2>Contract List</h2>
-<mat-list>
-  <mat-list-item *ngFor="let contract of contracts">
-    
-      <span class="badge">{{counter}}</span> Contractor {{contract.contractor1Id}} -- Contractor
-      {{contract.contractor2Id}}
-    
-  </mat-list-item>
-</mat-list>
+</form> -->
