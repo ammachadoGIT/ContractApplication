@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatListModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatToolbarModule
 
     // // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // // and returns simulated server responses.
