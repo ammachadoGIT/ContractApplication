@@ -1,0 +1,18 @@
+<h2>Add Contract</h2>
+
+<div>
+  <label for="contract-name">Contractor</label>
+  <input id="contract-name" #contractName />
+
+  <label for="contract-address">Contractor</label>
+  <input id="contract-address" #contractAddress />
+</div>
+
+<ul class="contracts">
+  <li *ngFor="let contract of contracts">
+    <a>
+      <span class="badge">{{counter}}</span> Contractor {{contract.contractor1Id}} -- Contractor
+      {{contract.contractor2Id}}
+    </a>
+  </li>
+</ul>

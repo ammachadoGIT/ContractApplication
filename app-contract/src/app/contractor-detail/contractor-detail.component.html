@@ -1,0 +1,17 @@
+<div *ngIf="contractor">
+  <h2>Contractor Details</h2>
+  <div>
+    <label for="contractor-name">Name</label>
+    <input id="contractor-name" [(ngModel)]="contractor.name" readonly />
+    <label for="contractor-address">Address</label>
+    <input id="contractor-address" [(ngModel)]="contractor.address" readonly />
+    <label for="contractor-phoneNumber">Phone Number</label>
+    <input id="contractor-phoneNumber" [(ngModel)]="contractor.phoneNumber" readonly />
+    <label for="contractor-type">Type</label>
+    <input id="contractor-type" [(ngModel)]="contractor.contractorType" readonly />
+    <label for="contractor-healthStatus">Health Status</label>
+    <input id="contractor-healthStatus" [(ngModel)]="contractor.healthStatus" readonly />
+
+  </div>
+  <button (click)="goBack()">Go back</button>
+</div>

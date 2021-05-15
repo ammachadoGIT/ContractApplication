@@ -1,0 +1,25 @@
+<h2>Add Contractor</h2>
+
+<div>
+  <label for="contractor-name">Name</label>
+  <input id="contractor-name" #contractorName />
+
+  <label for="contractor-address">Address</label>
+  <input id="contractor-address" #contractorAddress />
+
+  <label for="contractor-phoneNumber">Phone Number</label>
+  <input id="contractor-phoneNumber" #contractorPhoneNumber />
+
+  <button class="add-button" (click)="add(contractorName.value,
+     contractorAddress.value, contractorPhoneNumber.value); contractorName.value=''">
+    Submit
+  </button>
+</div>
+
+<ul class="contractors">
+  <li *ngFor="let contractor of contractors">
+    <a routerLink="/contractors/{{contractor.id}}">
+      <span class="badge">{{contractor.id}}</span> {{contractor.name}}
+    </a>
+  </li>
+</ul>
