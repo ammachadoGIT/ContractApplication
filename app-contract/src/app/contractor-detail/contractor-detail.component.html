@@ -1,34 +1,45 @@
-<div *ngIf="contractor">
+<div>
   <h2>Contractor Details</h2>
 
   <form class="contractor-form">
 
     <mat-form-field class="contractor-full-width">
       <mat-label>Name</mat-label>
-      <input matInput id="contractor-name" name="name" [(ngModel)]="contractor.name" readonly />
+      <input matInput id="contractor-name" name="name" [(ngModel)]="contractor.name" [readonly]="isReadOnly" />
     </mat-form-field>
 
     <mat-form-field class="contractor-full-width">
       <mat-label>Address</mat-label>
-      <input matInput id="contractor-address" name="address" [(ngModel)]="contractor.address" readonly />
+      <input matInput id="contractor-address" name="address" [(ngModel)]="contractor.address" [readonly]="isReadOnly" />
     </mat-form-field>
 
     <mat-form-field class="contractor-full-width">
       <mat-label>Phone Number</mat-label>
-      <input matInput id="contractor-phoneNumber" name="phoneNumber" [(ngModel)]="contractor.phoneNumber" readonly />
+      <input matInput id="contractor-phoneNumber" name="phoneNumber" [(ngModel)]="contractor.phoneNumber"
+        [readonly]="isReadOnly" />
     </mat-form-field>
 
-    <mat-form-field class="contractor-full-width">
+    <mat-form-field class="contractor-full-width" *ngIf="contractor">
       <mat-label>Type</mat-label>
-      <mat-select id="contractor-type" name="type" [(ngModel)]="contractor.contractorType" readonly ></mat-select>
+      <mat-select id="contractor-type" name="type" [(ngModel)]="contractor.contractorType" [disabled]="isReadOnly">
+      </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="contractor-full-width">
+    <mat-form-field class="contractor-full-width" *ngIf="contractor">
       <mat-label>Health Status</mat-label>
-      <mat-select id="contractor-healthStatus" name="healthStatus" [(ngModel)]="contractor.healthStatus" readonly ></mat-select>
+      <mat-select id="contractor-healthStatus" name="healthStatus" [(ngModel)]="contractor.healthStatus"
+        [disabled]="isReadOnly">
+        <mat-option value="1">aaa</mat-option>
+        <mat-option value="2">bbb</mat-option>
+      </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button (click)="goBack()">Go back</button>
+    <mat-action-list>
+      <button mat-raised-button (click)="goBack()">Back</button>
+      <button mat-raised-button (click)="add(contractor);" color="primary" *ngIf="!isReadOnly">
+        Submit
+      </button>
+    </mat-action-list>
   </form>
 
 </div>
