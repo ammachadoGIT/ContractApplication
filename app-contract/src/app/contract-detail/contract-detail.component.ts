@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 
 import { Contract } from '../contracts/contract';
 import { ContractService } from '../contracts/contract.service';
+import { Contractor } from '../contractors/contractor';
+import { ContractorService } from '../contractors/contractor.service';
 
 @Component({
   selector: 'app-contract-detail',
@@ -12,16 +14,19 @@ import { ContractService } from '../contracts/contract.service';
 })
 export class ContractDetailComponent implements OnInit {
   contract: Contract;
+  contractors: Contractor[];
   isReadOnly: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private contractService: ContractService,
+    private contractorService: ContractorService,
     private location: Location
   ) { }
 
   ngOnInit(): void {
     this.clearContract();
+    this.listContractors();
 
     const id1 = +this.route.snapshot.paramMap.get('id1');
     const id2 = +this.route.snapshot.paramMap.get('id2');
@@ -57,4 +62,10 @@ export class ContractDetailComponent implements OnInit {
       contractor2Id: null
     };
   }
+
+  listContractors(): void {
+    this.contractorService.list()
+      .subscribe(contractors => this.contractors = contractors);
+  }
+
 }

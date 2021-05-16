@@ -21,16 +21,16 @@
 
     <mat-form-field class="contractor-full-width" *ngIf="contractor">
       <mat-label>Type</mat-label>
-      <mat-select id="contractor-type" name="type" [(ngModel)]="contractor.contractorType" [disabled]="isReadOnly">
+      <mat-select id="contractor-type" name="type" [(ngModel)]="contractor.type" [disabled]="isReadOnly">
+        <mat-option *ngFor="let contractorType of contractorTypes" [value]="contractorType.id">{{contractorType.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="contractor-full-width" *ngIf="contractor">
+    <mat-form-field class="contractor-full-width" *ngIf="isReadOnly">
       <mat-label>Health Status</mat-label>
       <mat-select id="contractor-healthStatus" name="healthStatus" [(ngModel)]="contractor.healthStatus"
         [disabled]="isReadOnly">
-        <mat-option value="1">aaa</mat-option>
-        <mat-option value="2">bbb</mat-option>
+        <mat-option *ngFor="let healthStatus of healthStatuses" [value]="healthStatus.id">{{healthStatus.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 

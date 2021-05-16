@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 
 import { Contractor } from '../contractors/contractor';
 import { ContractorService } from '../contractors/contractor.service';
+import { EnumService } from '../shared/EnumService';
+import { EnumDescription } from '../contractors/EnumDescription';
 
 @Component({
   selector: 'app-contractor-detail',
@@ -13,15 +15,20 @@ import { ContractorService } from '../contractors/contractor.service';
 export class ContractorDetailComponent implements OnInit {
   contractor: Contractor;
   isReadOnly: boolean;
+  healthStatuses: EnumDescription[];
+  contractorTypes: EnumDescription[];
 
   constructor(
     private route: ActivatedRoute,
     private contractorService: ContractorService,
+    private enumService: EnumService,
     private location: Location
   ) { }
 
   ngOnInit(): void {
     this.clearContractor();
+    this.listHealthStatus();
+    this.listContractorType();
 
     const id = +this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -34,12 +41,12 @@ export class ContractorDetailComponent implements OnInit {
   }
 
   add(contractor: Contractor): void {
-    this.contractorService.addContractor(contractor)
+    this.contractorService.create(contractor)
       .subscribe(_ => this.clearContractor());
   }
 
   getContractor(id: number): void {
-    this.contractorService.getContractor(id)
+    this.contractorService.getById(id)
       .subscribe(contractor => this.contractor = contractor);
   }
 
@@ -54,7 +61,17 @@ export class ContractorDetailComponent implements OnInit {
       address: '',
       phoneNumber: '',
       healthStatus: null,
-      contractorType: null
+      type: null
     };
+  }
+
+  listHealthStatus(): void {
+    this.enumService.listHealthStatus()
+      .subscribe(statuses => this.healthStatuses = statuses);
+  }
+
+  listContractorType(): void {
+    this.enumService.listContractorType()
+      .subscribe(types => this.contractorTypes = types);
   }
 }
