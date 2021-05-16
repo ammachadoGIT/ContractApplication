@@ -43,7 +43,6 @@ namespace ContractApplication.Controllers
         public List<int> GetShortestPath([FromQuery] int fromId, [FromQuery] int toId)
         {
             var contractors = this.contractorService.ListContractors();
-
             return this.contractorService.GetShortestPath(fromId, toId, contractors);
         }
     }
