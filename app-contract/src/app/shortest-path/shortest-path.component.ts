@@ -19,7 +19,6 @@ export class ShortestPathComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.clearForm();
     this.listContractors();
   }
 
@@ -29,16 +28,11 @@ export class ShortestPathComponent implements OnInit {
   }
 
   goBack(): void {
-    this.clearForm();
     this.location.back();
-  }
-
-  clearForm(): void {
   }
 
   listContractors(): void {
     this.contractorService.list()
       .subscribe(contractors => this.contractors = contractors);
   }
-
 }
