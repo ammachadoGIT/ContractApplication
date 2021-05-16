@@ -11,5 +11,7 @@ namespace ContractApplication.Services.Interfaces
         Task CreateContract(ContractDto contractDto);
 
         Task DeleteContract(ContractDto contractDto);
+
+        Task<ContractDto> GetContractByIdsAsync(int id1, int id2);
     }
 }

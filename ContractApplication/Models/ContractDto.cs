@@ -8,6 +8,10 @@ namespace ContractApplication.Models
 
         public int Contractor2Id { get; set; }
 
+        public string Contractor1Name { get; set; }
+
+        public string Contractor2Name { get; set; }
+
         [JsonIgnore]
         public ContractorDto Contractor1 { get; set; }
 

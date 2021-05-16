@@ -53,13 +53,16 @@ export class ContractDetailComponent implements OnInit {
   }
 
   goBack(): void {
+    this.clearContract();
     this.location.back();
   }
 
   clearContract(): void {
     this.contract = {
       contractor1Id: null,
-      contractor2Id: null
+      contractor2Id: null,
+      contractor2Name: '',
+      contractor1Name: ''
     };
   }
 

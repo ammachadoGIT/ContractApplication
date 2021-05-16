@@ -3,7 +3,7 @@
     public enum ContractorType
     {
         Carrier,
-        Mga,
+        MGA,
         Advisor
     }
 }

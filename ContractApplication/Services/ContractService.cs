@@ -44,6 +44,12 @@ namespace ContractApplication.Services
             await this.context.SaveChangesAsync();
         }
 
+        public async Task<ContractDto> GetContractByIdsAsync(int id1, int id2)
+        {
+            var contract = await this.context.Contracts.FindAsync(id1, id2);
+            return this.Mapper.Map<ContractDto>(contract);
+        }
+
         private void ValidateContractDto(ContractDto contractDto)
         {
             if (contractDto.IsSelfContract())

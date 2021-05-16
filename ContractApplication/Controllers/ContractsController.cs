@@ -24,6 +24,15 @@ namespace ContractApplication.Controllers
             return this.contractService.ListContracts();
         }
 
+        [HttpGet("{id1}/{id2}")]
+        public async Task<IActionResult> GetContractByIds([FromRoute] int id1, [FromRoute] int id2)
+        {
+            var contract = await this.contractService.GetContractByIdsAsync(id1, id2);
+            return contract == null
+                       ? (IActionResult)this.NotFound()
+                       : this.Ok(contract);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateContract([FromBody] ContractDto contractDto)
         {
