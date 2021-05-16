@@ -17,13 +17,13 @@ export class ContractDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private contractService: ContractService,
-    private location: Location  
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     const id1 = +this.route.snapshot.paramMap.get('id1');
     const id2 = +this.route.snapshot.paramMap.get('id2');
-    
+
     if (id1 && id2) {
       this.getById(id1, id2);
       this.isReadOnly = true;
@@ -54,6 +54,6 @@ export class ContractDetailComponent implements OnInit {
     this.contract = {
       contractor1Id: null,
       contractor2Id: null
-    }
+    };
   }
 }
