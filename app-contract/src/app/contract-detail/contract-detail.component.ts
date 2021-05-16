@@ -44,7 +44,7 @@ export class ContractDetailComponent implements OnInit {
     // TODO:
     if (false) { return; }
     this.contractService.create(contract)
-      .subscribe(_ => this.clearContract);
+      .subscribe(_ => this.clearContract());
   }
 
   getById(id1: number, id2: number): void {
@@ -71,4 +71,8 @@ export class ContractDetailComponent implements OnInit {
       .subscribe(contractors => this.contractors = contractors);
   }
 
+  delete(contractor1Id: number, contractor2Id: number): void {
+    this.contractService.delete(contractor1Id, contractor2Id)
+      .subscribe(_ => this.goBack());
+  }
 }

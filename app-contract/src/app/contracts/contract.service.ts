@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -45,5 +45,20 @@ export class ContractService extends BaseService {
       tap((newContract: Contract) => this.log(`added contract ${newContract.contractor1Id}--${newContract.contractor2Id}`)),
       catchError(this.handleError<Contract>('create'))
     );
+  }
+
+  delete(contractor1Id: number, contractor2Id: number): Observable<Contract> {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        contractor1Id: contractor1Id,
+        contractor2Id: contractor2Id
+      },
+    };
+
+    return this.http.delete<Contract>(this.contractsUrl, options).pipe(
+      catchError(this.handleError<Contract>('delete')));
   }
 }
