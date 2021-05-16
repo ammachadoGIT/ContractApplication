@@ -19,6 +19,8 @@
             </mat-select>
         </mat-form-field>
 
+        <h3 *ngIf="shortestPath">Shortest Path is: {{shortestPath}}</h3>
+
         <mat-action-list>
             <button mat-raised-button (click)="goBack()">Back</button>
             <button mat-raised-button (click)="getShortestPath(contractor1Id.value, contractor2Id.value);" color="primary">
