@@ -50,10 +50,8 @@ export class ContractorService extends BaseService {
   }
 
   getShortestPath(id1: number, id2: number): Observable<string> {
-    const opts = { params: new HttpParams({ fromString: `fromId:${id1}, toId: ${id2}` }) };
-
-    return this.http.get<string>(`${this.apiUrl}/shortest-path`, opts)
-      .pipe(catchError(this.handleError<string>('addContractor'))
-      );
+    const queryString = `fromId=${id1}&toId=${id2}`;
+    return this.http.get<string>(`${this.apiUrl}/shortest-path?${queryString}`, this.httpOptions)
+      .pipe(catchError(this.handleError<string>('addContractor')));
   }
 }
