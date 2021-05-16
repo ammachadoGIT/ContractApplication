@@ -39,12 +39,12 @@ namespace ContractApplication.Services
             return this.Mapper.Map<ContractorDto>(contractor);
         }
 
-        public List<int> GetShortestPath(
+        public List<ContractorDto> GetShortestPath(
             int fromContractor,
             int toContractor,
             IEnumerable<ContractorDto> contractorDtos)
         {
-            var previousNodeDictionary = new Dictionary<int, ContractorDto>();
+            var previousNodeDictionary = new Dictionary<ContractorDto, ContractorDto>();
             var visitedHashSet = new HashSet<ContractorDto>();
             var queue = new Queue<ContractorDto>();
 
@@ -63,44 +63,57 @@ namespace ContractApplication.Services
                 foreach (var neighborNode in currentDto.ContractFrom)
                 {
                     var neighborContractor = neighborNode.Contractor2;
-                    if (previousNodeDictionary.ContainsKey(neighborContractor.Id))
+                    if (FindById(neighborContractor.Id, previousNodeDictionary) != null)
                     {
                         continue;
                     }
 
-                    previousNodeDictionary.Add(neighborContractor.Id, currentDto);
+                    previousNodeDictionary.Add(neighborContractor, currentDto);
                     queue.Enqueue(neighborContractor);
                 }
 
                 foreach (var neighborNode in currentDto.ContractTo)
                 {
                     var neighborContractor = neighborNode.Contractor1;
-                    if (previousNodeDictionary.ContainsKey(neighborContractor.Id))
+                    if (FindById(neighborContractor.Id, previousNodeDictionary) != null)
                     {
                         continue;
                     }
 
-                    previousNodeDictionary.Add(neighborContractor.Id, currentDto);
+                    previousNodeDictionary.Add(neighborContractor, currentDto);
                     queue.Enqueue(neighborContractor);
                 }
             }
 
-            var result = new List<int>();
-            if (!previousNodeDictionary.ContainsKey(toContractor))
+            return PrintShortestPath(fromContractor, toContractor, previousNodeDictionary);
+        }
+
+        private static List<ContractorDto> PrintShortestPath(
+            int fromContractor,
+            int toContractor,
+            IReadOnlyDictionary<ContractorDto, ContractorDto> nodeDictionary)
+        {
+            var result = new List<ContractorDto>();
+            if (FindById(toContractor, nodeDictionary) == null)
             {
-                return result;
+                return null;
             }
 
-            var currentNode = toContractor;
-            while (currentNode != fromContractor)
+            var currentNode = FindById(toContractor, nodeDictionary);
+            while (currentNode != FindById(fromContractor, nodeDictionary))
             {
                 result.Add(currentNode);
-                currentNode = previousNodeDictionary[currentNode].Id;
+                currentNode = nodeDictionary[currentNode];
             }
 
-            result.Add(fromContractor);
+            result.Add(FindById(fromContractor, nodeDictionary));
             result.Reverse();
             return result;
+        }
+
+        private static ContractorDto FindById(int id, IReadOnlyDictionary<ContractorDto, ContractorDto> nodeDictionary)
+        {
+            return nodeDictionary.Keys.FirstOrDefault(x => x.Id == id);
         }
     }
 }

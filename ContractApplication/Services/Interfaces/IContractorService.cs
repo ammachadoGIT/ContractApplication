@@ -12,6 +12,9 @@ namespace ContractApplication.Services.Interfaces
 
         Task<ContractorDto> CreateContractor(ContractorDto contractorDto);
 
-        List<int> GetShortestPath(int fromContractor, int toContractor, IEnumerable<ContractorDto> contractorDtos);
+        List<ContractorDto> GetShortestPath(
+            int fromContractor,
+            int toContractor,
+            IEnumerable<ContractorDto> contractorDtos);
     }
 }
