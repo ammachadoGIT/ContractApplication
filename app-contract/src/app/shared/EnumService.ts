@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { MessageService } from '../message.service';
+import { MessageService } from './message.service';
 import { BaseService } from '../shared/BaseService';
 import { environment } from 'src/environments/environment';
 import { EnumDescription } from '../contractors/EnumDescription';

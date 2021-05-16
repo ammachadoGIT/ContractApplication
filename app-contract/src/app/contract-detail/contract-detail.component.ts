@@ -16,6 +16,7 @@ export class ContractDetailComponent implements OnInit {
   contract: Contract;
   contractors: Contractor[];
   isReadOnly: boolean;
+  validationMessages: string[]
 
   constructor(
     private route: ActivatedRoute,
@@ -41,9 +42,14 @@ export class ContractDetailComponent implements OnInit {
   }
 
   create(contract: Contract): void {
+    this.contractService.messageService.clear()
+
     if (!contract || !contract.contractor1Id || !contract.contractor2Id) { return; }
     this.contractService.create(contract)
-      .subscribe(_ => this.clearContract());
+      .subscribe(_ => {
+        this.validationMessages = this.contractService.messageService.messages;
+        this.clearContract();
+      });
   }
 
   getById(id1: number, id2: number): void {

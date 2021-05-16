@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { Contract } from './contract';
-import { MessageService } from '../message.service';
+import { MessageService } from '../shared/message.service';
 import { BaseService } from '../shared/BaseService';
 import { environment } from 'src/environments/environment';
 
@@ -27,7 +27,6 @@ export class ContractService extends BaseService {
   list(): Observable<Contract[]> {
     return this.http.get<Contract[]>(this.contractsUrl)
       .pipe(
-        tap(_ => this.log('fetched contracts')),
         catchError(this.handleError<Contract[]>('list', []))
       );
   }
@@ -35,15 +34,13 @@ export class ContractService extends BaseService {
   getById(id1: number, id2: number): Observable<Contract> {
     const url = `${this.contractsUrl}/${id1}/${id2}`;
     return this.http.get<Contract>(url).pipe(
-      tap(_ => this.log(`fetched contract id=${id1}/${id2}`)),
       catchError(this.handleError<Contract>(`getById id=${id1}/${id2}`))
     );
   }
 
   create(contract: Contract): Observable<Contract> {
     return this.http.post<Contract>(this.contractsUrl, contract, this.httpOptions).pipe(
-      tap((newContract: Contract) => this.log(`added contract ${newContract.contractor1Id}--${newContract.contractor2Id}`)),
-      catchError(this.handleError<Contract>('create'))
+      catchError(this.handleError<Contract>())
     );
   }
 
@@ -60,5 +57,10 @@ export class ContractService extends BaseService {
 
     return this.http.delete<Contract>(this.contractsUrl, options).pipe(
       catchError(this.handleError<Contract>('delete')));
+  }
+
+  getMessages() : string[]
+  {
+    return this.messageService.messages
   }
 }

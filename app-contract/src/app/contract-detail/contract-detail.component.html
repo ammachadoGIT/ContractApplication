@@ -6,24 +6,29 @@
         <mat-form-field class="contract-full-width">
             <mat-label>Contractor</mat-label>
             <mat-select id="contractor1-id" name="contract.contractor1Id" [disabled]="isReadOnly" [(ngModel)]="contract.contractor1Id" #contractor1Id>
-                <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}</mat-option>
+                <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field class="contract-full-width">
             <mat-label>Contractor</mat-label>
             <mat-select id="contractor2-id" name="contract.contractor2Id" [disabled]="isReadOnly" [(ngModel)]="contract.contractor2Id" #contractor2Id>
-                <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}</mat-option>
+                <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-action-list>
             <button mat-raised-button (click)="goBack()">Back</button>
             <button mat-raised-button (click)="create(contract);" color="primary" *ngIf="!isReadOnly">
-        Submit
-      </button>
+                Submit
+            </button>
             <button mat-raised-button color="warn" (click)="delete(contractor1Id.value, contractor2Id.value)" *ngIf="isReadOnly"> Delete </button>
         </mat-action-list>
+
+        <h3 class="error" *ngIf="validationMessages">{{validationMessages}}</h3>
+
     </form>
 
 </div>

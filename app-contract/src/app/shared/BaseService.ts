@@ -1,9 +1,10 @@
-import { MessageService } from '../message.service';
+import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 
 export class BaseService {
+
   constructor(
-    private messageService: MessageService) { }
+    public messageService: MessageService) { }
 
   /**
    * Handle Http operation that failed.
@@ -11,11 +12,12 @@ export class BaseService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  protected handleError<T>(operation = 'operation', result?: T) {
+  protected handleError<T>(operation = 'Operation', result?: T) {
     return (error: any): Observable<T> => {
+      console.log('yes its an error')
 
       console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
+      this.log(`${operation} failed: ${error.error || error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result);
@@ -24,6 +26,7 @@ export class BaseService {
 
   /** Log a ContractorService message with the MessageService */
   protected log(message: string) {
-    this.messageService.add(`ContractorService: ${message}`);
+    console.log('its getting here')
+    this.messageService.add(message);
   }
 }

@@ -5,7 +5,7 @@
     <mat-list class="contractors">
         <mat-list-item *ngFor="let contractor of contractors">
             <a routerLink="/contractors/{{contractor.id}}">
-        {{contractor.id}}. {{contractor.name}}
+        {{contractor.name}} ({{contractor.id}})
       </a>
         </mat-list-item>
     </mat-list>
