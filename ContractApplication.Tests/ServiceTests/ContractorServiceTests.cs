@@ -14,7 +14,7 @@ namespace ContractApplication.Tests.ServiceTests
         public ContractorServiceTests()
             : base(
             new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseSqlite("Filename=Test.db")
+                .UseSqlite("Filename=ContractApplicationTests.db")
                 .Options)
         {
         }
@@ -35,6 +35,8 @@ namespace ContractApplication.Tests.ServiceTests
             {
                 var newContractor = this.Fixture.Build<ContractorDto>()
                     .Without(c => c.Id)
+                    .Without(c => c.ContractFrom)
+                    .Without(c => c.ContractTo)
                     .Create();
 
                 var sut = new ContractorService(context);

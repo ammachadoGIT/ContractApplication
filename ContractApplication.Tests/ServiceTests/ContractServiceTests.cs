@@ -14,7 +14,7 @@ namespace ContractApplication.Tests.ServiceTests
         public ContractServiceTests()
             : base(
             new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseSqlite("Filename=Test.db")
+                .UseSqlite("Filename=ContractApplicationTests.db")
                 .Options)   
         {
         }

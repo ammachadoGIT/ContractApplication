@@ -12,6 +12,7 @@ namespace ContractApplication.Tests
         public void Setup()
         {
             this.Fixture = new Fixture();
+            this.Fixture.Behaviors.Add(new OmitOnRecursionBehavior());
         }
     }
 }
