@@ -1,4 +1,12 @@
-html, body { height: 100%; padding: .5rem;
-  max-width: 1000px;
-  margin: auto; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+    padding: .5rem;
+    max-width: 1000px;
+    margin: auto;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+    padding-left: 10em;
+}
