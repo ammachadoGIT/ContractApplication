@@ -26,7 +26,7 @@ export class ContractorService extends BaseService {
     super(messageService);
   }
 
-  getContractors(): Observable<Contractor[]> {
+  list(): Observable<Contractor[]> {
     return this.http.get<Contractor[]>(this.apiUrl)
       .pipe(
         tap(_ => this.log('fetched contractors')),
@@ -34,7 +34,7 @@ export class ContractorService extends BaseService {
       );
   }
 
-  getContractor(id: number): Observable<Contractor> {
+  getById(id: number): Observable<Contractor> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Contractor>(url).pipe(
       tap(_ => this.log(`fetched contractor id=${id}`)),
@@ -42,7 +42,7 @@ export class ContractorService extends BaseService {
     );
   }
 
-  addContractor(contractor: Contractor): Observable<Contractor> {
+  create(contractor: Contractor): Observable<Contractor> {
     return this.http.post<Contractor>(this.apiUrl, contractor, this.httpOptions).pipe(
       tap((newContractor: Contractor) => this.log(`added contractor w/ id=${newContractor.id}`)),
       catchError(this.handleError<Contractor>('addContractor'))

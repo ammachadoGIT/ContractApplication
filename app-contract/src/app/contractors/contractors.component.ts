@@ -18,7 +18,7 @@ export class ContractorsComponent implements OnInit {
   }
 
   getContractors(): void {
-    this.contractorService.getContractors()
+    this.contractorService.list()
       .subscribe(contractors => this.contractors = contractors);
   }
 
