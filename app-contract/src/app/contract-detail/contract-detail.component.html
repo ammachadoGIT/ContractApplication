@@ -1,0 +1,26 @@
+<div>
+  <h2>Contract Details</h2>
+
+  <form class="contract-form">
+
+    <mat-form-field class="contract-full-width">
+      <mat-label>Contractor</mat-label>
+      <mat-select id="contractor1-id" name="contract.contractor1Id" #contractor1Id [disabled]="isReadOnly">
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="contract-full-width">
+      <mat-label>Contractor</mat-label>
+      <mat-select id="contractor2-id" name="contract.contractor2Id" #contractor2Id [disabled]="isReadOnly"></mat-select>
+    </mat-form-field>
+
+    <mat-action-list>
+      <button mat-raised-button (click)="goBack()">Back</button>
+      <button mat-raised-button (click)="create(contract);" color="primary" *ngIf="!isReadOnly">
+        Submit
+      </button>
+      <button mat-raised-button color="warn" *ngIf="isReadOnly"> Delete </button>
+    </mat-action-list>
+  </form>
+
+</div>

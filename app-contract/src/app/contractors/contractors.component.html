@@ -1,6 +1,7 @@
 
 
-<h2>Contractors List</h2>
+<h2>Contractors</h2>
+<a routerLink="/contractors/new"><button mat-raised-button color="primary" >Add Contractor</button></a>
 
 <mat-list class="contractors">
   <mat-list-item *ngFor="let contractor of contractors">
@@ -9,31 +10,3 @@
     </a>
   </mat-list-item>
 </mat-list>
-
-<!-- <h2>Add Contractor</h2>
-
-<form class="contractor-form">
-  <mat-form-field class="contractor-full-width">
-    <mat-label>Name</mat-label>
-    <input matInput id="contractor-name" #contractorName />
-  </mat-form-field>
-
-  <mat-form-field class="contractor-full-width">
-    <mat-label for="contractor-address">Address</mat-label>
-    <input matInput id="contractor-address" #contractorAddress />
-  </mat-form-field>
-
-  <mat-form-field class="contractor-full-width">
-    <mat-label for="contractor-phoneNumber">Phone Number</mat-label>
-    <input matInput id="contractor-phoneNumber" #contractorPhoneNumber />
-  </mat-form-field>
-
-  <mat-action-list>
-    <button mat-raised-button (click)="goBack()">Go back</button>
-    <button mat-raised-button (click)="add(contractorName.value, contractorAddress.value, contractorPhoneNumber.value); contractorName.value=''">
-      Submit
-    </button>
-  </mat-action-list>
-
-</form>
- -->
