@@ -10,7 +10,7 @@ import { ContractorService } from '../contractors/contractor.service';
   styleUrls: ['./shortest-path.component.css']
 })
 export class ShortestPathComponent implements OnInit {
-  shortestPath: string;
+  shortestPathMessage: string;
   contractors: Contractor[];
 
   constructor(
@@ -24,7 +24,9 @@ export class ShortestPathComponent implements OnInit {
 
   getShortestPath(id1: number, id2: number): void {
     this.contractorService.getShortestPath(id1, id2)
-      .subscribe(result => this.shortestPath = result);
+      .subscribe(result => this.shortestPathMessage = result.length > 0 
+         ? 'The shortest path is: ' +result.map(x => `${x.name} (${x.id})`).join(' -- ') 
+         : 'No path was found between the contractors.');
   }
 
   goBack(): void {
@@ -33,6 +35,7 @@ export class ShortestPathComponent implements OnInit {
 
   listContractors(): void {
     this.contractorService.list()
-      .subscribe(contractors => this.contractors = contractors);
+      .subscribe(contractors => this.contractors = contractors
+        );
   }
 }

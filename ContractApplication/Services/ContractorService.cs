@@ -85,28 +85,31 @@ namespace ContractApplication.Services
                 }
             }
 
-            return PrintShortestPath(fromContractor, toContractor, previousNodeDictionary);
+            return PrintShortestPath(
+                FindById(fromContractor, previousNodeDictionary),
+                FindById(toContractor, previousNodeDictionary),
+                previousNodeDictionary);
         }
 
         private static List<ContractorDto> PrintShortestPath(
-            int fromContractor,
-            int toContractor,
+            ContractorDto fromContractor,
+            ContractorDto toContractor,
             IReadOnlyDictionary<ContractorDto, ContractorDto> nodeDictionary)
         {
             var result = new List<ContractorDto>();
-            if (FindById(toContractor, nodeDictionary) == null)
+            if (toContractor == null)
             {
-                return null;
+                return new List<ContractorDto>();
             }
 
-            var currentNode = FindById(toContractor, nodeDictionary);
-            while (currentNode != FindById(fromContractor, nodeDictionary))
+            var currentNode = toContractor;
+            while (currentNode != fromContractor)
             {
                 result.Add(currentNode);
                 currentNode = nodeDictionary[currentNode];
             }
 
-            result.Add(FindById(fromContractor, nodeDictionary));
+            result.Add(fromContractor);
             result.Reverse();
             return result;
         }

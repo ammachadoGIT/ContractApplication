@@ -47,9 +47,9 @@ export class ContractorService extends BaseService {
     );
   }
 
-  getShortestPath(id1: number, id2: number): Observable<string> {
+  getShortestPath(id1: number, id2: number): Observable<Contractor[]> {
     const queryString = `fromId=${id1}&toId=${id2}`;
-    return this.http.get<string>(`${this.apiUrl}/shortest-path?${queryString}`, this.httpOptions)
-      .pipe(catchError(this.handleError<string>('addContractor')));
+    return this.http.get<Contractor[]>(`${this.apiUrl}/shortest-path?${queryString}`, this.httpOptions)
+      .pipe(catchError(this.handleError<Contractor[]>('addContractor')));
   }
 }

@@ -1,11 +1,11 @@
 <div>
-    <h2>Shortest Path</h2>
+    <h2>Shortest Contracting Chain</h2>
 
     <form class="contract-form">
 
         <mat-form-field class="contract-full-width">
             <mat-label>Contractor</mat-label>
-            <mat-select id="contractor1-id" name="contract.contractor1Id" #contractor1Id>
+            <mat-select id="contractor1-id" name="contract.contractor1Id" #contractor1Id (selectionChange)="shortestPathMessage=''">
                 <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}
                 </mat-option>
             </mat-select>
@@ -13,13 +13,13 @@
 
         <mat-form-field class="contract-full-width">
             <mat-label>Contractor</mat-label>
-            <mat-select id="contractor2-id" name="contract.contractor2Id" #contractor2Id>
+            <mat-select id="contractor2-id" name="contract.contractor2Id" #contractor2Id (selectionChange)="shortestPathMessage=''">
                 <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
 
-        <h3 *ngIf="shortestPath">Shortest Path is: {{shortestPath}}</h3>
+        <h3>{{shortestPathMessage}}</h3>
 
         <mat-action-list>
             <button mat-raised-button (click)="goBack()">Back</button>
