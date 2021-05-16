@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 import { Contractor } from './contractor';
 import { MessageService } from '../message.service';
 import { BaseService } from '../shared/BaseService';
 import { environment } from '../../environments/environment';
-
-
 
 @Injectable({ providedIn: 'root' })
 export class ContractorService extends BaseService {
