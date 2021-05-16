@@ -41,6 +41,7 @@ export class ContractorDetailComponent implements OnInit {
   }
 
   add(contractor: Contractor): void {
+    if (!contractor || !contractor.name || !contractor.address || !contractor.phoneNumber || !contractor.type) { return; }
     this.contractorService.create(contractor)
       .subscribe(_ => this.clearContractor());
   }

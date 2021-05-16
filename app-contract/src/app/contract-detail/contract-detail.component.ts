@@ -40,9 +40,8 @@ export class ContractDetailComponent implements OnInit {
     }
   }
 
-  create(contract): void {
-    // TODO:
-    if (false) { return; }
+  create(contract: Contract): void {
+    if (!contract || !contract.contractor1Id || !contract.contractor2Id) { return; }
     this.contractService.create(contract)
       .subscribe(_ => this.clearContract());
   }
