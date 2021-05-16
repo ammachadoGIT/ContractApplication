@@ -51,6 +51,7 @@ export class ContractorDetailComponent implements OnInit {
   }
 
   goBack(): void {
+    this.clearContractor();
     this.location.back();
   }
 
