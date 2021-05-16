@@ -10,12 +10,14 @@ import { ContractorDetailComponent } from './contractor-detail/contractor-detail
 import { ContractorsComponent } from './contractors/contractors.component';
 import { ContractsComponent } from './contracts/contracts.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatButtonModule} from '@angular/material/button'; 
+import { ContractDetailComponent } from './contract-detail/contract-detail.component';
 
 @NgModule({
   imports: [
@@ -24,7 +26,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppRoutingModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatSliderModule,
+    MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     MatListModule,
@@ -43,7 +45,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppComponent,
     ContractorsComponent,
     ContractorDetailComponent,
-    ContractsComponent
+    ContractsComponent,
+    ContractDetailComponent
   ],
   bootstrap: [AppComponent]
 })
