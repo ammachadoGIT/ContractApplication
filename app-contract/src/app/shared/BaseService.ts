@@ -14,8 +14,6 @@ export class BaseService {
    */
   protected handleError<T>(operation = 'Operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.log('yes its an error')
-
       console.error(error); // log to console instead
       this.log(`${operation} failed: ${error.error || error.message}`);
 
@@ -26,7 +24,6 @@ export class BaseService {
 
   /** Log a ContractorService message with the MessageService */
   protected log(message: string) {
-    console.log('its getting here')
     this.messageService.add(message);
   }
 }

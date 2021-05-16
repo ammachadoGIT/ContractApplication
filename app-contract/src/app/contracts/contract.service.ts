@@ -50,8 +50,7 @@ export class ContractService extends BaseService {
         'Content-Type': 'application/json',
       }),
       body: {
-        contractor1Id: contractor1Id,
-        contractor2Id: contractor2Id
+        contractor1Id, contractor2Id
       },
     };
 
@@ -59,8 +58,7 @@ export class ContractService extends BaseService {
       catchError(this.handleError<Contract>('delete')));
   }
 
-  getMessages() : string[]
-  {
-    return this.messageService.messages
+  getMessages(): string[] {
+    return this.messageService.messages;
   }
 }
