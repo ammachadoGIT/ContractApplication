@@ -21,6 +21,8 @@ export class ContractDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.clearContract();
+
     const id1 = +this.route.snapshot.paramMap.get('id1');
     const id2 = +this.route.snapshot.paramMap.get('id2');
 
@@ -29,7 +31,6 @@ export class ContractDetailComponent implements OnInit {
       this.isReadOnly = true;
     }
     else {
-      this.clearContract();
       this.isReadOnly = false;
     }
   }

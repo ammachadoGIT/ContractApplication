@@ -21,13 +21,14 @@ export class ContractorDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.clearContractor();
+
     const id = +this.route.snapshot.paramMap.get('id');
     if (id) {
       this.getContractor(id);
       this.isReadOnly = true;
     }
     else {
-      this.clearContractor();
       this.isReadOnly = false;
     }
   }
