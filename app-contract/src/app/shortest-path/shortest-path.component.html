@@ -1,0 +1,30 @@
+<div>
+    <h2>Shortest Path</h2>
+
+    <form class="contract-form">
+
+        <mat-form-field class="contract-full-width">
+            <mat-label>Contractor</mat-label>
+            <mat-select id="contractor1-id" name="contract.contractor1Id" #contractor1Id>
+                <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="contract-full-width">
+            <mat-label>Contractor</mat-label>
+            <mat-select id="contractor2-id" name="contract.contractor2Id" #contractor2Id>
+                <mat-option *ngFor="let contractor of contractors" [value]="contractor.id">{{contractor.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-action-list>
+            <button mat-raised-button (click)="goBack()">Back</button>
+            <button mat-raised-button (click)="getShortestPath(contractor1Id.value, contractor2Id.value);" color="primary">
+                Submit
+            </button>
+        </mat-action-list>
+    </form>
+
+</div>

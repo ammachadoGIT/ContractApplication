@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -47,5 +47,13 @@ export class ContractorService extends BaseService {
       tap((newContractor: Contractor) => this.log(`added contractor w/ id=${newContractor.id}`)),
       catchError(this.handleError<Contractor>('addContractor'))
     );
+  }
+
+  getShortestPath(id1: number, id2: number): Observable<string> {
+    const opts = { params: new HttpParams({ fromString: `fromId:${id1}, toId: ${id2}` }) };
+
+    return this.http.get<string>(`${this.apiUrl}/shortest-path`, opts)
+      .pipe(catchError(this.handleError<string>('addContractor'))
+      );
   }
 }

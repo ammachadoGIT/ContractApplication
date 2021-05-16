@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { ContractDetailComponent } from './contract-detail/contract-detail.component';
+import { ShortestPathComponent } from './shortest-path/shortest-path.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
     ContractorsComponent,
     ContractorDetailComponent,
     ContractsComponent,
-    ContractDetailComponent
+    ContractDetailComponent,
+    ShortestPathComponent
   ],
   bootstrap: [AppComponent]
 })

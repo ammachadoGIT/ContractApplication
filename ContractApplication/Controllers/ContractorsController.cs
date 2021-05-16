@@ -39,7 +39,7 @@ namespace ContractApplication.Controllers
             return this.CreatedAtAction(nameof(this.CreateContractor), newContractor);
         }
 
-        [HttpGet("path")]
+        [HttpGet("shortest-path")]
         public List<int> GetShortestPath([FromQuery] int fromId, [FromQuery] int toId)
         {
             var contractors = this.contractorService.ListContractors();
