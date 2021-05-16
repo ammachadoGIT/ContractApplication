@@ -22,6 +22,8 @@ namespace ContractApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<ApplicationDbContext>(
                 options =>
@@ -44,6 +46,8 @@ namespace ContractApplication
             {
                 app.UseHsts();
             }
+
+            app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader());
 
             app.UseHttpsRedirection();
             app.UseMvc();
