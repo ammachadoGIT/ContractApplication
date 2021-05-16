@@ -1,13 +1,15 @@
-<h2>Contracts</h2>
-<a routerLink="/contracts/new">
-<button mat-raised-button color="primary" >Add Contract</button>
-</a>
-
-
-<mat-list>
-  <mat-list-item *ngFor="let contract of contracts">
-    <a routerLink="/contracts/{{contract.contractor1Id}}/{{contract.contractor2Id}}">    
-      {{contract.contractor1Name}} -- {{contract.contractor2Name}}
+<div>
+    <h2>Contracts</h2>
+    <a routerLink="/contracts/new">
+        <button mat-raised-button color="primary">Add Contract</button>
     </a>
-  </mat-list-item>
-</mat-list>
+
+
+    <mat-list>
+        <mat-list-item *ngFor="let contract of contracts">
+            <a routerLink="/contracts/{{contract.contractor1Id}}/{{contract.contractor2Id}}">
+        {{contract.contractor1Name}} -- {{contract.contractor2Name}}
+      </a>
+        </mat-list-item>
+    </mat-list>
+</div>
