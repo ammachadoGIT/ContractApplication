@@ -22,17 +22,6 @@ export class ContractorsComponent implements OnInit {
       .subscribe(contractors => this.contractors = contractors);
   }
 
-  add(name: string, address: string, phoneNumber: string): void {
-    name = name.trim();
-    address = address.trim();
-    phoneNumber = phoneNumber.trim();
-    if (!name || !address || !phoneNumber) { return; }
-    this.contractorService.addContractor({ name, address, phoneNumber } as Contractor)
-      .subscribe(contractor => {
-        this.contractors.push(contractor);
-      });
-  }
-
   goBack(): void {
     // this.location.back();
   }
