@@ -10,25 +10,15 @@ import { ContractService } from './contract.service';
 })
 export class ContractsComponent implements OnInit {
   contracts: Contract[];
-  counter: 0;
 
   constructor(private contractService: ContractService) { }
 
   ngOnInit() {
-    this.getContracts();
+    this.list();
   }
 
-  getContracts(): void {
-    this.contractService.getContracts()
+  list(): void {
+    this.contractService.list()
       .subscribe(contracts => this.contracts = contracts);
-  }
-
-  add(contractor1Id: number, contractor2Id: number): void {
-    // TODO:
-    if (false) { return; }
-    this.contractService.addContract({ contractor1Id, contractor2Id } as Contract)
-      .subscribe(contract => {
-        this.contracts.push(contract);
-      });
   }
 }

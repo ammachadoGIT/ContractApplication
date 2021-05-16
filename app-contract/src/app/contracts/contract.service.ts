@@ -24,39 +24,26 @@ export class ContractService extends BaseService {
     super(messageService);
   }
 
-  getContracts(): Observable<Contract[]> {
+  list(): Observable<Contract[]> {
     return this.http.get<Contract[]>(this.contractsUrl)
       .pipe(
         tap(_ => this.log('fetched contracts')),
-        catchError(this.handleError<Contract[]>('getContracts', []))
+        catchError(this.handleError<Contract[]>('list', []))
       );
   }
 
-  getContractNo404<Data>(id: number): Observable<Contract> {
-    const url = `${this.contractsUrl}/?id=${id}`;
-    return this.http.get<Contract[]>(url)
-      .pipe(
-        map(contracts => contracts[0]),
-        tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} contract id=${id}`);
-        }),
-        catchError(this.handleError<Contract>(`getContract id=${id}`))
-      );
-  }
-
-  getContract(id: number): Observable<Contract> {
-    const url = `${this.contractsUrl}/${id}`;
+  getById(id1: number, id2: number): Observable<Contract> {
+    const url = `${this.contractsUrl}/${id1}/${id2}`;
     return this.http.get<Contract>(url).pipe(
-      tap(_ => this.log(`fetched contract id=${id}`)),
-      catchError(this.handleError<Contract>(`getContract id=${id}`))
+      tap(_ => this.log(`fetched contract id=${id1}/${id2}`)),
+      catchError(this.handleError<Contract>(`getById id=${id1}/${id2}`))
     );
   }
 
-  addContract(contract: Contract): Observable<Contract> {
+  create(contract: Contract): Observable<Contract> {
     return this.http.post<Contract>(this.contractsUrl, contract, this.httpOptions).pipe(
       tap((newContract: Contract) => this.log(`added contract ${newContract.contractor1Id}--${newContract.contractor2Id}`)),
-      catchError(this.handleError<Contract>('addContract'))
+      catchError(this.handleError<Contract>('create'))
     );
   }
 }
