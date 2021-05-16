@@ -1,14 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using Newtonsoft.Json;
 
 namespace ContractApplication.Models
 {
     public class ContractorDto
     {
-        [Required]
         public int Id { get; set; }
 
         [Required]
@@ -27,16 +24,13 @@ namespace ContractApplication.Models
         [EnumDataType(typeof(ContractorType))]
         public ContractorType Type { get; set; }
 
-        [Required]
         [EnumDataType(typeof(HealthStatus))]
-        public HealthStatus HealthStatus { get; set; }
+        public HealthStatus? HealthStatus { get; set; }
 
         [JsonIgnore]
         public ICollection<ContractDto> ContractFrom { get; set; }
 
         [JsonIgnore]
         public ICollection<ContractDto> ContractTo { get; set; }
-
-        //public IEnumerable<Contractor> AdjacentNodes =>
     }
 }
